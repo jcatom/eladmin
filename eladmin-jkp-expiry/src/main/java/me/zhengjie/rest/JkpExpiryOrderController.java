@@ -44,7 +44,6 @@ public class JkpExpiryOrderController {
 
     private final JkpExpiryOrderService jkpExpiryOrderService;
 
-    @Log("导出数据")
     @ApiOperation("导出数据")
     @GetMapping(value = "/download")
     @PreAuthorize("@el.check('jkpExpiryOrder:list')")
@@ -53,15 +52,14 @@ public class JkpExpiryOrderController {
     }
 
     @GetMapping
-    @Log("查询即开票订单管理")
     @ApiOperation("查询即开票订单管理")
     @PreAuthorize("@el.check('jkpExpiryOrder:list')")
     public ResponseEntity<Object> query(JkpExpiryOrderQueryCriteria criteria, Pageable pageable){
+        System.out.println("test");
         return new ResponseEntity<>(jkpExpiryOrderService.queryAll(criteria,pageable),HttpStatus.OK);
     }
 
     @PostMapping
-    @Log("新增即开票订单管理")
     @ApiOperation("新增即开票订单管理")
     @PreAuthorize("@el.check('jkpExpiryOrder:add')")
     public ResponseEntity<Object> create(@Validated @RequestBody JkpExpiryOrder resources){
@@ -69,7 +67,6 @@ public class JkpExpiryOrderController {
     }
 
     @PutMapping
-    @Log("修改即开票订单管理")
     @ApiOperation("修改即开票订单管理")
     @PreAuthorize("@el.check('jkpExpiryOrder:edit')")
     public ResponseEntity<Object> update(@Validated @RequestBody JkpExpiryOrder resources){
@@ -77,7 +74,6 @@ public class JkpExpiryOrderController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @Log("删除即开票订单管理")
     @ApiOperation("删除即开票订单管理")
     @PreAuthorize("@el.check('jkpExpiryOrder:del')")
     @DeleteMapping

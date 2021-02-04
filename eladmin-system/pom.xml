@@ -31,6 +31,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>me.zhengjie</groupId>
+            <artifactId>eladmin-jkp-expiry</artifactId>
+            <version>2.6</version>
+        </dependency>
 
         <!-- tools 模块包含了 common 和 logging 模块 -->
         <dependency>
