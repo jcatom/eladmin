@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -18,7 +18,8 @@ package me.zhengjie.modules.mnt.util;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.util.StringUtils;
 import com.google.common.collect.Lists;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.sql.DataSource;
 import java.io.BufferedReader;
@@ -32,8 +33,9 @@ import java.util.List;
 /**
  * @author /
  */
-@Slf4j
 public class SqlUtils {
+
+	private final static Logger log = LoggerFactory.getLogger(SqlUtils.class);
 
 	public static final String COLON = ":";
 

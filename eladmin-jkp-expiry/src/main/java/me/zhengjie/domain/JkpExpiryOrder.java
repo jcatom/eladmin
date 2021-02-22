@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 Zheng Jie
+*  Copyright 2019-2020 Evil
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -15,17 +15,16 @@
 */
 package me.zhengjie.domain;
 
-import lombok.Data;
 import cn.hutool.core.bean.BeanUtil;
-import io.swagger.annotations.ApiModelProperty;
 import cn.hutool.core.bean.copier.CopyOptions;
+import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
-import javax.validation.constraints.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import org.hibernate.annotations.*;
-import java.sql.Timestamp;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 /**
 * @website https://el-admin.vip
@@ -34,7 +33,6 @@ import java.io.Serializable;
 * @date 2021-01-24
 **/
 @Entity
-@Data
 @Table(name="jkp_expiry_order")
 public class JkpExpiryOrder implements Serializable {
 
@@ -42,7 +40,7 @@ public class JkpExpiryOrder implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     @ApiModelProperty(value = "订单ID")
-    private Integer id;
+    private Long id;
 
     @Column(name = "create_time",nullable = false)
     @NotNull
@@ -73,6 +71,62 @@ public class JkpExpiryOrder implements Serializable {
     @NotNull
     @ApiModelProperty(value = "兑奖用户ID")
     private Integer expiryUserId;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getTicketPhotoUrl() {
+        return ticketPhotoUrl;
+    }
+
+    public void setTicketPhotoUrl(String ticketPhotoUrl) {
+        this.ticketPhotoUrl = ticketPhotoUrl;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
+    }
+
+    public Integer getExpiryUserId() {
+        return expiryUserId;
+    }
+
+    public void setExpiryUserId(Integer expiryUserId) {
+        this.expiryUserId = expiryUserId;
+    }
 
     public void copy(JkpExpiryOrder source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));

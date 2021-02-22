@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,19 +15,32 @@
  */
 package me.zhengjie.modules.mnt.websocket;
 
-import lombok.Data;
-
 /**
- * @author ZhangHouYing
+ * @author Evil
  * @date 2019-08-10 9:55
  */
-@Data
 public class SocketMsg {
 	private String msg;
 	private MsgType msgType;
 
 	public SocketMsg(String msg, MsgType msgType) {
 		this.msg = msg;
+		this.msgType = msgType;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public MsgType getMsgType() {
+		return msgType;
+	}
+
+	public void setMsgType(MsgType msgType) {
 		this.msgType = msgType;
 	}
 }

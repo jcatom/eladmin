@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,17 +15,16 @@
  */
 package me.zhengjie.service.dto;
 
-import lombok.Data;
 import me.zhengjie.annotation.Query;
+
 import java.sql.Timestamp;
 import java.util.List;
 
 /**
  * 日志查询类
- * @author Zheng Jie
+ * @author Evil
  * @date 2019-6-4 09:23:07
  */
-@Data
 public class LogQueryCriteria {
 
     @Query(blurry = "username,description,address,requestIp,method,params")
@@ -36,4 +35,28 @@ public class LogQueryCriteria {
 
     @Query(type = Query.Type.BETWEEN)
     private List<Timestamp> createTime;
+
+    public String getBlurry() {
+        return blurry;
+    }
+
+    public void setBlurry(String blurry) {
+        this.blurry = blurry;
+    }
+
+    public String getLogType() {
+        return logType;
+    }
+
+    public void setLogType(String logType) {
+        this.logType = logType;
+    }
+
+    public List<Timestamp> getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(List<Timestamp> createTime) {
+        this.createTime = createTime;
+    }
 }

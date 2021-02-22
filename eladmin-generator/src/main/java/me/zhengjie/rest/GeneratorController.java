@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -17,32 +17,34 @@ package me.zhengjie.rest;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.domain.ColumnInfo;
 import me.zhengjie.exception.BadRequestException;
 import me.zhengjie.service.GenConfigService;
 import me.zhengjie.service.GeneratorService;
 import me.zhengjie.utils.PageUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2019-01-02
  */
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/generator")
 @Api(tags = "系统：代码生成管理")
 public class GeneratorController {
 
-    private final GeneratorService generatorService;
-    private final GenConfigService genConfigService;
+    @Autowired
+    private GeneratorService generatorService;
+    @Autowired
+    private GenConfigService genConfigService;
 
     @Value("${generator.enabled}")
     private Boolean generatorEnabled;

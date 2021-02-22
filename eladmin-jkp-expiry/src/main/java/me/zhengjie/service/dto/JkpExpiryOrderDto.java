@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 Zheng Jie
+*  Copyright 2019-2020 Evil
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -15,9 +15,8 @@
 */
 package me.zhengjie.service.dto;
 
-import lombok.Data;
-import java.sql.Timestamp;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 /**
 * @website https://el-admin.vip
@@ -25,11 +24,10 @@ import java.io.Serializable;
 * @author minliang.jiang
 * @date 2021-01-24
 **/
-@Data
 public class JkpExpiryOrderDto implements Serializable {
 
     /** 订单ID */
-    private Integer id;
+    private Long id;
 
     /** 创建时间 */
     private Timestamp createTime;
@@ -48,4 +46,60 @@ public class JkpExpiryOrderDto implements Serializable {
 
     /** 兑奖用户ID */
     private Integer expiryUserId;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getTicketPhotoUrl() {
+        return ticketPhotoUrl;
+    }
+
+    public void setTicketPhotoUrl(String ticketPhotoUrl) {
+        this.ticketPhotoUrl = ticketPhotoUrl;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
+    }
+
+    public Integer getExpiryUserId() {
+        return expiryUserId;
+    }
+
+    public void setExpiryUserId(Integer expiryUserId) {
+        this.expiryUserId = expiryUserId;
+    }
 }

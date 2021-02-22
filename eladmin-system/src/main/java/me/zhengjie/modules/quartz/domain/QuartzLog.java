@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,18 +16,17 @@
 package me.zhengjie.modules.quartz.domain;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2019-01-07
  */
 @Entity
-@Data
 @Table(name = "sys_quartz_log")
 public class QuartzLog implements Serializable {
 
@@ -53,7 +52,8 @@ public class QuartzLog implements Serializable {
     private String cronExpression;
 
     @ApiModelProperty(value = "状态", hidden = true)
-    private Boolean isSuccess;
+    @Column(name = "is_success")
+    private Boolean success;
 
     @ApiModelProperty(value = "异常详情", hidden = true)
     private String exceptionDetail;
@@ -64,4 +64,84 @@ public class QuartzLog implements Serializable {
     @CreationTimestamp
     @ApiModelProperty(value = "创建时间", hidden = true)
     private Timestamp createTime;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getJobName() {
+        return jobName;
+    }
+
+    public void setJobName(String jobName) {
+        this.jobName = jobName;
+    }
+
+    public String getBeanName() {
+        return beanName;
+    }
+
+    public void setBeanName(String beanName) {
+        this.beanName = beanName;
+    }
+
+    public String getMethodName() {
+        return methodName;
+    }
+
+    public void setMethodName(String methodName) {
+        this.methodName = methodName;
+    }
+
+    public String getParams() {
+        return params;
+    }
+
+    public void setParams(String params) {
+        this.params = params;
+    }
+
+    public String getCronExpression() {
+        return cronExpression;
+    }
+
+    public void setCronExpression(String cronExpression) {
+        this.cronExpression = cronExpression;
+    }
+
+    public Boolean getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(Boolean success) {
+        success = success;
+    }
+
+    public String getExceptionDetail() {
+        return exceptionDetail;
+    }
+
+    public void setExceptionDetail(String exceptionDetail) {
+        this.exceptionDetail = exceptionDetail;
+    }
+
+    public Long getTime() {
+        return time;
+    }
+
+    public void setTime(Long time) {
+        this.time = time;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
 }

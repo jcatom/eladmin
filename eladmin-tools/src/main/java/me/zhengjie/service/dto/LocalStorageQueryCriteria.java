@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,17 +15,15 @@
  */
 package me.zhengjie.service.dto;
 
-import lombok.Data;
+import me.zhengjie.annotation.Query;
+
 import java.sql.Timestamp;
 import java.util.List;
 
-import me.zhengjie.annotation.Query;
-
 /**
-* @author Zheng Jie
+* @author Evil
 * @date 2019-09-05
 */
-@Data
 public class LocalStorageQueryCriteria{
 
     @Query(blurry = "name,suffix,type,createBy,size")
@@ -33,4 +31,20 @@ public class LocalStorageQueryCriteria{
 
     @Query(type = Query.Type.BETWEEN)
     private List<Timestamp> createTime;
+
+    public String getBlurry() {
+        return blurry;
+    }
+
+    public void setBlurry(String blurry) {
+        this.blurry = blurry;
+    }
+
+    public List<Timestamp> getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(List<Timestamp> createTime) {
+        this.createTime = createTime;
+    }
 }

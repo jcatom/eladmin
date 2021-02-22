@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,18 +15,17 @@
  */
 package me.zhengjie.service.dto;
 
-import lombok.Data;
 import me.zhengjie.annotation.Query;
+
 import java.sql.Timestamp;
 import java.util.List;
 
 /**
  * sm.ms图床
  *
- * @author Zheng Jie
+ * @author Evil
  * @date 2019-6-4 09:52:09
  */
-@Data
 public class PictureQueryCriteria{
 
     @Query(type = Query.Type.INNER_LIKE)
@@ -37,4 +36,28 @@ public class PictureQueryCriteria{
 
     @Query(type = Query.Type.BETWEEN)
     private List<Timestamp> createTime;
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public List<Timestamp> getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(List<Timestamp> createTime) {
+        this.createTime = createTime;
+    }
 }

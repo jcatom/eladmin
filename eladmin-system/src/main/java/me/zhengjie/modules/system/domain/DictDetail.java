@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,20 +16,17 @@
 package me.zhengjie.modules.system.domain;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
 import me.zhengjie.base.BaseEntity;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
-* @author Zheng Jie
+* @author Evil
 * @date 2019-04-10
 */
 @Entity
-@Getter
-@Setter
 @Table(name="sys_dict_detail")
 public class DictDetail extends BaseEntity implements Serializable {
 
@@ -53,4 +50,44 @@ public class DictDetail extends BaseEntity implements Serializable {
 
     @ApiModelProperty(value = "排序")
     private Integer dictSort = 999;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Dict getDict() {
+        return dict;
+    }
+
+    public void setDict(Dict dict) {
+        this.dict = dict;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public Integer getDictSort() {
+        return dictSort;
+    }
+
+    public void setDictSort(Integer dictSort) {
+        this.dictSort = dictSort;
+    }
 }

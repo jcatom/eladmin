@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -18,9 +18,8 @@ package me.zhengjie.service.impl;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.ZipUtil;
-import lombok.RequiredArgsConstructor;
-import me.zhengjie.domain.GenConfig;
 import me.zhengjie.domain.ColumnInfo;
+import me.zhengjie.domain.GenConfig;
 import me.zhengjie.domain.vo.TableInfo;
 import me.zhengjie.exception.BadRequestException;
 import me.zhengjie.repository.ColumnInfoRepository;
@@ -31,6 +30,7 @@ import me.zhengjie.utils.PageUtil;
 import me.zhengjie.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -48,17 +48,17 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2019-01-02
  */
 @Service
-@RequiredArgsConstructor
 public class GeneratorServiceImpl implements GeneratorService {
     private static final Logger log = LoggerFactory.getLogger(GeneratorServiceImpl.class);
     @PersistenceContext
     private EntityManager em;
 
-    private final ColumnInfoRepository columnInfoRepository;
+    @Autowired
+    private ColumnInfoRepository columnInfoRepository;
 
     @Override
     public Object getTables() {

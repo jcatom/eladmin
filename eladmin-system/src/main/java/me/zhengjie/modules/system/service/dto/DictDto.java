@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,18 +15,15 @@
  */
 package me.zhengjie.modules.system.service.dto;
 
-import lombok.Getter;
-import lombok.Setter;
 import me.zhengjie.base.BaseDTO;
+
 import java.io.Serializable;
 import java.util.List;
 
 /**
-* @author Zheng Jie
+* @author Evil
 * @date 2019-04-10
 */
-@Getter
-@Setter
 public class DictDto extends BaseDTO implements Serializable {
 
     private Long id;
@@ -36,4 +33,36 @@ public class DictDto extends BaseDTO implements Serializable {
     private String name;
 
     private String description;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<DictDetailDto> getDictDetails() {
+        return dictDetails;
+    }
+
+    public void setDictDetails(List<DictDetailDto> dictDetails) {
+        this.dictDetails = dictDetails;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

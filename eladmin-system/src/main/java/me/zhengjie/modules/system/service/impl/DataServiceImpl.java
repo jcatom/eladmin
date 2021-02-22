@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package me.zhengjie.modules.system.service.impl;
 
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.modules.system.domain.Dept;
 import me.zhengjie.modules.system.service.DataService;
 import me.zhengjie.modules.system.service.DeptService;
@@ -23,24 +22,27 @@ import me.zhengjie.modules.system.service.RoleService;
 import me.zhengjie.modules.system.service.dto.RoleSmallDto;
 import me.zhengjie.modules.system.service.dto.UserDto;
 import me.zhengjie.utils.enums.DataScopeEnum;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+
 import java.util.*;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @website https://el-admin.vip
  * @description 数据权限服务实现
  * @date 2020-05-07
  **/
 @Service
-@RequiredArgsConstructor
 @CacheConfig(cacheNames = "data")
 public class DataServiceImpl implements DataService {
 
-    private final RoleService roleService;
-    private final DeptService deptService;
+    @Autowired
+    private RoleService roleService;
+    @Autowired
+    private DeptService deptService;
 
     /**
      * 用户角色改变时需清理缓存

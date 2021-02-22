@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,9 +16,8 @@
 package me.zhengjie.modules.system.domain;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
 import me.zhengjie.base.BaseEntity;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -26,12 +25,10 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
-* @author Zheng Jie
+* @author Evil
 * @date 2019-04-10
 */
 @Entity
-@Getter
-@Setter
 @Table(name="sys_dict")
 public class Dict extends BaseEntity implements Serializable {
 
@@ -51,4 +48,36 @@ public class Dict extends BaseEntity implements Serializable {
 
     @ApiModelProperty(value = "描述")
     private String description;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<DictDetail> getDictDetails() {
+        return dictDetails;
+    }
+
+    public void setDictDetails(List<DictDetail> dictDetails) {
+        this.dictDetails = dictDetails;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

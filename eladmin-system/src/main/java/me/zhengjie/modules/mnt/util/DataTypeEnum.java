@@ -18,12 +18,10 @@
  */
 
 package me.zhengjie.modules.mnt.util;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author /
  */
-@Slf4j
 @SuppressWarnings({"unchecked","all"})
 public enum DataTypeEnum {
 

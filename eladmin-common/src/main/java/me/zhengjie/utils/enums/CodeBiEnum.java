@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,18 +15,13 @@
  */
 package me.zhengjie.utils.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 /**
  * <p>
  * 验证码业务场景
  * </p>
- * @author Zheng Jie
+ * @author Evil
  * @date 2020-05-02
  */
-@Getter
-@AllArgsConstructor
 public enum CodeBiEnum {
 
     /* 旧邮箱修改邮箱 */
@@ -37,6 +32,19 @@ public enum CodeBiEnum {
 
     private final Integer code;
     private final String description;
+
+    CodeBiEnum(Integer code, String description) {
+        this.code = code;
+        this.description = description;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 
     public static CodeBiEnum find(Integer code) {
         for (CodeBiEnum value : CodeBiEnum.values()) {

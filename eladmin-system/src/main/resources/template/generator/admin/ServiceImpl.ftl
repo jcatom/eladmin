@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 Zheng Jie
+*  Copyright 2019-2020 Evil
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -27,13 +27,13 @@ import me.zhengjie.exception.EntityExistException;
 </#if>
 import me.zhengjie.utils.ValidationUtil;
 import me.zhengjie.utils.FileUtil;
-import lombok.RequiredArgsConstructor;
 import ${package}.repository.${className}Repository;
 import ${package}.service.${className}Service;
 import ${package}.service.dto.${className}Dto;
 import ${package}.service.dto.${className}QueryCriteria;
 import ${package}.service.mapstruct.${className}Mapper;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 <#if !auto && pkColumnType = 'Long'>
 import cn.hutool.core.lang.Snowflake;
@@ -60,11 +60,12 @@ import java.util.LinkedHashMap;
 * @date ${date}
 **/
 @Service
-@RequiredArgsConstructor
 public class ${className}ServiceImpl implements ${className}Service {
 
-    private final ${className}Repository ${changeClassName}Repository;
-    private final ${className}Mapper ${changeClassName}Mapper;
+    @Autowired
+    private ${className}Repository ${changeClassName}Repository;
+    @Autowired
+    private ${className}Mapper ${changeClassName}Mapper;
 
     @Override
     public Map<String,Object> queryAll(${className}QueryCriteria criteria, Pageable pageable){

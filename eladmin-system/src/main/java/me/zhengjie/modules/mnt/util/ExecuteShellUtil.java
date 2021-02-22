@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -19,19 +19,24 @@ import cn.hutool.core.io.IoUtil;
 import com.jcraft.jsch.ChannelShell;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
-import lombok.extern.slf4j.Slf4j;
+import me.zhengjie.utils.QueryHelp;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.Vector;
 
 /**
  * 执行shell命令
  *
- * @author: ZhangHouYing
+ * @author: Evil
  * @date: 2019/8/10
  */
-@Slf4j
 public class ExecuteShellUtil {
+
+	private final static Logger log = LoggerFactory.getLogger(ExecuteShellUtil.class);
 
 	private Vector<String> stdout;
 

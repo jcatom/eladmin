@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -17,29 +17,31 @@ package me.zhengjie.modules.system.rest;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.domain.vo.EmailVo;
-import me.zhengjie.service.EmailService;
 import me.zhengjie.modules.system.service.VerifyService;
+import me.zhengjie.service.EmailService;
 import me.zhengjie.utils.enums.CodeBiEnum;
 import me.zhengjie.utils.enums.CodeEnum;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Objects;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2018-12-26
  */
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/code")
 @Api(tags = "系统：验证码管理")
 public class VerifyController {
 
-    private final VerifyService verificationCodeService;
-    private final EmailService emailService;
+    @Autowired
+    private VerifyService verificationCodeService;
+    @Autowired
+    private EmailService emailService;
 
     @PostMapping(value = "/resetEmail")
     @ApiOperation("重置邮箱，发送验证码")

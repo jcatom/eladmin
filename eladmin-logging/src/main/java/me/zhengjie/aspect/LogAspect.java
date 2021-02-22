@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package me.zhengjie.aspect;
 
-import lombok.extern.slf4j.Slf4j;
 import me.zhengjie.domain.Log;
 import me.zhengjie.service.LogService;
 import me.zhengjie.utils.RequestHolder;
@@ -29,15 +28,15 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2018-11-24
  */
 @Component
 @Aspect
-@Slf4j
 public class LogAspect {
 
     private final LogService logService;

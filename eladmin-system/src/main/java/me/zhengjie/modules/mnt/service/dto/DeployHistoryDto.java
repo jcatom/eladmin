@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,15 +15,13 @@
  */
 package me.zhengjie.modules.mnt.service.dto;
 
-import lombok.Data;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
-* @author zhanghouying
+* @author Evil
 * @date 2019-08-24
 */
-@Data
 public class DeployHistoryDto implements Serializable {
 
 	/**
@@ -55,4 +53,52 @@ public class DeployHistoryDto implements Serializable {
 	 * 部署编号
 	 */
 	private Long deployId;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getAppName() {
+		return appName;
+	}
+
+	public void setAppName(String appName) {
+		this.appName = appName;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	public Timestamp getDeployDate() {
+		return deployDate;
+	}
+
+	public void setDeployDate(Timestamp deployDate) {
+		this.deployDate = deployDate;
+	}
+
+	public String getDeployUser() {
+		return deployUser;
+	}
+
+	public void setDeployUser(String deployUser) {
+		this.deployUser = deployUser;
+	}
+
+	public Long getDeployId() {
+		return deployId;
+	}
+
+	public void setDeployId(Long deployId) {
+		this.deployId = deployId;
+	}
 }

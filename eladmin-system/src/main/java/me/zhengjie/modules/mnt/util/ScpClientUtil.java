@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ import java.util.logging.Logger;
 
 /**
  * 远程执行linux命令
- * @author: ZhangHouYing
+ * @author: Evil
  * @date: 2019-08-10 10:06
  */
 public class ScpClientUtil {

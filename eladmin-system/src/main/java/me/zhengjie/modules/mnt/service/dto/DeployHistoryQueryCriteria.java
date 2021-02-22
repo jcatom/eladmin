@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,16 +15,15 @@
  */
 package me.zhengjie.modules.mnt.service.dto;
 
-import lombok.Data;
 import me.zhengjie.annotation.Query;
+
 import java.sql.Timestamp;
 import java.util.List;
 
 /**
-* @author zhanghouying
+* @author Evil
 * @date 2019-08-24
 */
-@Data
 public class DeployHistoryQueryCriteria{
 
 	/**
@@ -38,4 +37,28 @@ public class DeployHistoryQueryCriteria{
 
 	@Query(type = Query.Type.BETWEEN)
 	private List<Timestamp> deployDate;
+
+	public String getBlurry() {
+		return blurry;
+	}
+
+	public void setBlurry(String blurry) {
+		this.blurry = blurry;
+	}
+
+	public Long getDeployId() {
+		return deployId;
+	}
+
+	public void setDeployId(Long deployId) {
+		this.deployId = deployId;
+	}
+
+	public List<Timestamp> getDeployDate() {
+		return deployDate;
+	}
+
+	public void setDeployDate(List<Timestamp> deployDate) {
+		this.deployDate = deployDate;
+	}
 }

@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 Zheng Jie
+*  Copyright 2019-2020 Evil
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
 */
 package ${package}.service.dto;
 
-import lombok.Data;
 <#if hasTimestamp>
 import java.sql.Timestamp;
 </#if>
@@ -34,7 +33,6 @@ import com.alibaba.fastjson.serializer.ToStringSerializer;
 * @author ${author}
 * @date ${date}
 **/
-@Data
 public class ${className}Dto implements Serializable {
 <#if columns??>
     <#list columns as column>

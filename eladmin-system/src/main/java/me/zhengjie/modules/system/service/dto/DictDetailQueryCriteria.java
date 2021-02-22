@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,14 +15,12 @@
  */
 package me.zhengjie.modules.system.service.dto;
 
-import lombok.Data;
 import me.zhengjie.annotation.Query;
 
 /**
-* @author Zheng Jie
+* @author Evil
 * @date 2019-04-10
 */
-@Data
 public class DictDetailQueryCriteria {
 
     @Query(type = Query.Type.INNER_LIKE)
@@ -30,4 +28,20 @@ public class DictDetailQueryCriteria {
 
     @Query(propName = "name",joinName = "dict")
     private String dictName;
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public String getDictName() {
+        return dictName;
+    }
+
+    public void setDictName(String dictName) {
+        this.dictName = dictName;
+    }
 }

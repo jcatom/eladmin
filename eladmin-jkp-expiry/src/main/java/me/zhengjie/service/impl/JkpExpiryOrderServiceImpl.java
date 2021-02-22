@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 Zheng Jie
+*  Copyright 2019-2020 Evil
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -16,26 +16,27 @@
 package me.zhengjie.service.impl;
 
 import me.zhengjie.domain.JkpExpiryOrder;
-import me.zhengjie.utils.ValidationUtil;
-import me.zhengjie.utils.FileUtil;
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.repository.JkpExpiryOrderRepository;
 import me.zhengjie.service.JkpExpiryOrderService;
 import me.zhengjie.service.dto.JkpExpiryOrderDto;
 import me.zhengjie.service.dto.JkpExpiryOrderQueryCriteria;
 import me.zhengjie.service.mapstruct.JkpExpiryOrderMapper;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import me.zhengjie.utils.FileUtil;
 import me.zhengjie.utils.PageUtil;
 import me.zhengjie.utils.QueryHelp;
-import java.util.List;
-import java.util.Map;
-import java.io.IOException;
+import me.zhengjie.utils.ValidationUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
 * @website https://el-admin.vip
@@ -44,11 +45,12 @@ import java.util.LinkedHashMap;
 * @date 2021-01-24
 **/
 @Service
-@RequiredArgsConstructor
 public class JkpExpiryOrderServiceImpl implements JkpExpiryOrderService {
 
-    private final JkpExpiryOrderRepository jkpExpiryOrderRepository;
-    private final JkpExpiryOrderMapper jkpExpiryOrderMapper;
+    @Autowired
+    private JkpExpiryOrderRepository jkpExpiryOrderRepository;
+    @Autowired
+    private JkpExpiryOrderMapper jkpExpiryOrderMapper;
 
     @Override
     public Map<String,Object> queryAll(JkpExpiryOrderQueryCriteria criteria, Pageable pageable){
@@ -63,7 +65,7 @@ public class JkpExpiryOrderServiceImpl implements JkpExpiryOrderService {
 
     @Override
     @Transactional
-    public JkpExpiryOrderDto findById(Integer id) {
+    public JkpExpiryOrderDto findById(Long id) {
         JkpExpiryOrder jkpExpiryOrder = jkpExpiryOrderRepository.findById(id).orElseGet(JkpExpiryOrder::new);
         ValidationUtil.isNull(jkpExpiryOrder.getId(),"JkpExpiryOrder","id",id);
         return jkpExpiryOrderMapper.toDto(jkpExpiryOrder);
@@ -85,8 +87,8 @@ public class JkpExpiryOrderServiceImpl implements JkpExpiryOrderService {
     }
 
     @Override
-    public void deleteAll(Integer[] ids) {
-        for (Integer id : ids) {
+    public void deleteAll(Long[] ids) {
+        for (Long id : ids) {
             jkpExpiryOrderRepository.deleteById(id);
         }
     }

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package me.zhengjie.service.impl;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.json.JSONUtil;
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.domain.Log;
 import me.zhengjie.repository.LogRepository;
 import me.zhengjie.service.LogService;
@@ -30,6 +29,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -44,16 +44,18 @@ import java.lang.reflect.Parameter;
 import java.util.*;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2018-11-24
  */
 @Service
-@RequiredArgsConstructor
 public class LogServiceImpl implements LogService {
     private static final Logger log = LoggerFactory.getLogger(LogServiceImpl.class);
-    private final LogRepository logRepository;
-    private final LogErrorMapper logErrorMapper;
-    private final LogSmallMapper logSmallMapper;
+    @Autowired
+    private LogRepository logRepository;
+    @Autowired
+    private LogErrorMapper logErrorMapper;
+    @Autowired
+    private LogSmallMapper logSmallMapper;
 
     @Override
     public Object queryAll(LogQueryCriteria criteria, Pageable pageable) {

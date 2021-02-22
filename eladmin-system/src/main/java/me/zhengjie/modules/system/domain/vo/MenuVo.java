@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,16 +16,15 @@
 package me.zhengjie.modules.system.domain.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Data;
+
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * 构建前端路由时用到
- * @author Zheng Jie
+ * @author Evil
  * @date 2018-12-20
  */
-@Data
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class MenuVo implements Serializable {
 
@@ -44,4 +43,68 @@ public class MenuVo implements Serializable {
     private MenuMetaVo meta;
 
     private List<MenuVo> children;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public Boolean getHidden() {
+        return hidden;
+    }
+
+    public void setHidden(Boolean hidden) {
+        this.hidden = hidden;
+    }
+
+    public String getRedirect() {
+        return redirect;
+    }
+
+    public void setRedirect(String redirect) {
+        this.redirect = redirect;
+    }
+
+    public String getComponent() {
+        return component;
+    }
+
+    public void setComponent(String component) {
+        this.component = component;
+    }
+
+    public Boolean getAlwaysShow() {
+        return alwaysShow;
+    }
+
+    public void setAlwaysShow(Boolean alwaysShow) {
+        this.alwaysShow = alwaysShow;
+    }
+
+    public MenuMetaVo getMeta() {
+        return meta;
+    }
+
+    public void setMeta(MenuMetaVo meta) {
+        this.meta = meta;
+    }
+
+    public List<MenuVo> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<MenuVo> children) {
+        this.children = children;
+    }
 }

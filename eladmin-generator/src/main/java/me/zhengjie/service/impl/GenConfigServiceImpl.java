@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,23 +15,23 @@
  */
 package me.zhengjie.service.impl;
 
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.domain.GenConfig;
 import me.zhengjie.repository.GenConfigRepository;
 import me.zhengjie.service.GenConfigService;
-import me.zhengjie.utils.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.io.File;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2019-01-14
  */
 @Service
-@RequiredArgsConstructor
 public class GenConfigServiceImpl implements GenConfigService {
 
-    private final GenConfigRepository genConfigRepository;
+    @Autowired
+    private GenConfigRepository genConfigRepository;
 
     @Override
     public GenConfig find(String tableName) {

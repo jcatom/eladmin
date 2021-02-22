@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -79,7 +79,7 @@ public class ExecutionJob extends QuartzJobBean {
                 redisUtils.set(uuid, true);
             }
             // 任务状态
-            log.setIsSuccess(true);
+            log.setSuccess(true);
             System.out.println("任务执行完毕，任务名称：" + quartzJob.getJobName() + ", 执行时间：" + times + "毫秒");
             System.out.println("--------------------------------------------------------------");
             // 判断是否存在子任务
@@ -97,13 +97,13 @@ public class ExecutionJob extends QuartzJobBean {
             long times = System.currentTimeMillis() - startTime;
             log.setTime(times);
             // 任务状态 0：成功 1：失败
-            log.setIsSuccess(false);
+            log.setSuccess(false);
             log.setExceptionDetail(ThrowableUtil.getStackTrace(e));
             // 任务如果失败了则暂停
             if(quartzJob.getPauseAfterFailure() != null && quartzJob.getPauseAfterFailure()){
-                quartzJob.setIsPause(false);
+                quartzJob.setPause(false);
                 //更新状态
-                quartzJobService.updateIsPause(quartzJob);
+                quartzJobService.updatePause(quartzJob);
             }
             if(quartzJob.getEmail() != null){
                 EmailService emailService = SpringContextHolder.getBean(EmailService.class);

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package me.zhengjie.modules.security.security;
 
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.modules.security.config.bean.SecurityProperties;
 import me.zhengjie.modules.security.service.OnlineUserService;
 import me.zhengjie.modules.security.service.UserCacheClean;
@@ -27,13 +26,22 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 /**
  * @author /
  */
-@RequiredArgsConstructor
 public class TokenConfigurer extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 
-    private final TokenProvider tokenProvider;
-    private final SecurityProperties properties;
-    private final OnlineUserService onlineUserService;
-    private final UserCacheClean userCacheClean;
+    private TokenProvider tokenProvider;
+    private SecurityProperties properties;
+    private OnlineUserService onlineUserService;
+    private UserCacheClean userCacheClean;
+
+    public TokenConfigurer() {
+    }
+
+    public TokenConfigurer(TokenProvider tokenProvider, SecurityProperties properties, OnlineUserService onlineUserService, UserCacheClean userCacheClean) {
+        this.tokenProvider = tokenProvider;
+        this.properties = properties;
+        this.onlineUserService = onlineUserService;
+        this.userCacheClean = userCacheClean;
+    }
 
     @Override
     public void configure(HttpSecurity http) {

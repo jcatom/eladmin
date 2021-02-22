@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
  */
 package me.zhengjie.modules.system.service.dto;
 
-import lombok.Data;
 import me.zhengjie.annotation.Query;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.HashSet;
@@ -24,10 +24,9 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2018-11-23
  */
-@Data
 public class UserQueryCriteria implements Serializable {
 
     @Query
@@ -46,4 +45,53 @@ public class UserQueryCriteria implements Serializable {
 
     @Query(type = Query.Type.BETWEEN)
     private List<Timestamp> createTime;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Set<Long> getDeptIds() {
+        return deptIds;
+    }
+
+    public void setDeptIds(Set<Long> deptIds) {
+        this.deptIds = deptIds;
+    }
+
+    public String getBlurry() {
+        return blurry;
+    }
+
+    public void setBlurry(String blurry) {
+        this.blurry = blurry;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Long getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(Long deptId) {
+        this.deptId = deptId;
+    }
+
+    public List<Timestamp> getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(List<Timestamp> createTime) {
+        this.createTime = createTime;
+    }
 }

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,18 +15,13 @@
  */
 package me.zhengjie.utils.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 /**
  * <p>
  * 验证码业务场景对应的 Redis 中的 key
  * </p>
- * @author Zheng Jie
+ * @author Evil
  * @date 2020-05-02
  */
-@Getter
-@AllArgsConstructor
 public enum CodeEnum {
 
     /* 通过手机号码重置邮箱 */
@@ -43,4 +38,17 @@ public enum CodeEnum {
 
     private final String key;
     private final String description;
+
+    CodeEnum(String key, String description) {
+        this.key = key;
+        this.description = description;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

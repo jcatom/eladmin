@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -17,19 +17,19 @@ package me.zhengjie.rest;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import me.zhengjie.annotation.Log;
 import me.zhengjie.domain.QiniuConfig;
 import me.zhengjie.domain.QiniuContent;
-import me.zhengjie.service.dto.QiniuQueryCriteria;
 import me.zhengjie.service.QiNiuService;
+import me.zhengjie.service.dto.QiniuQueryCriteria;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
@@ -40,14 +40,13 @@ import java.util.Map;
  * @author 郑杰
  * @date 2018/09/28 6:55:53
  */
-@Slf4j
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/qiNiuContent")
 @Api(tags = "工具：七牛云存储管理")
 public class QiniuController {
 
-    private final QiNiuService qiNiuService;
+    @Autowired
+    private QiNiuService qiNiuService;
 
     @GetMapping(value = "/config")
     public ResponseEntity<Object> queryConfig(){

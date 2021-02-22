@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,12 +16,11 @@
 package me.zhengjie.modules.system.service.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.exception.BadRequestException;
+import me.zhengjie.exception.EntityExistException;
 import me.zhengjie.modules.security.service.UserCacheClean;
 import me.zhengjie.modules.system.domain.Menu;
 import me.zhengjie.modules.system.domain.Role;
-import me.zhengjie.exception.EntityExistException;
 import me.zhengjie.modules.system.domain.User;
 import me.zhengjie.modules.system.repository.RoleRepository;
 import me.zhengjie.modules.system.repository.UserRepository;
@@ -33,6 +32,7 @@ import me.zhengjie.modules.system.service.dto.UserDto;
 import me.zhengjie.modules.system.service.mapstruct.RoleMapper;
 import me.zhengjie.modules.system.service.mapstruct.RoleSmallMapper;
 import me.zhengjie.utils.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
@@ -49,20 +49,25 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2018-12-03
  */
 @Service
-@RequiredArgsConstructor
 @CacheConfig(cacheNames = "role")
 public class RoleServiceImpl implements RoleService {
 
-    private final RoleRepository roleRepository;
-    private final RoleMapper roleMapper;
-    private final RoleSmallMapper roleSmallMapper;
-    private final RedisUtils redisUtils;
-    private final UserRepository userRepository;
-    private final UserCacheClean userCacheClean;
+    @Autowired
+    private RoleRepository roleRepository;
+    @Autowired
+    private RoleMapper roleMapper;
+    @Autowired
+    private RoleSmallMapper roleSmallMapper;
+    @Autowired
+    private RedisUtils redisUtils;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private UserCacheClean userCacheClean;
 
     @Override
     public List<RoleDto> queryAll() {
@@ -169,7 +174,7 @@ public class RoleServiceImpl implements RoleService {
     public List<GrantedAuthority> mapToGrantedAuthorities(UserDto user) {
         Set<String> permissions = new HashSet<>();
         // 如果是管理员直接返回
-        if (user.getIsAdmin()) {
+        if (user.getAdmin()) {
             permissions.add("admin");
             return permissions.stream().map(SimpleGrantedAuthority::new)
                     .collect(Collectors.toList());

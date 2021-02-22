@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -17,24 +17,25 @@ package me.zhengjie.modules.system.service.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.ObjectUtil;
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.exception.BadRequestException;
 import me.zhengjie.modules.system.domain.Dept;
 import me.zhengjie.modules.system.domain.User;
+import me.zhengjie.modules.system.repository.DeptRepository;
 import me.zhengjie.modules.system.repository.RoleRepository;
 import me.zhengjie.modules.system.repository.UserRepository;
+import me.zhengjie.modules.system.service.DeptService;
 import me.zhengjie.modules.system.service.dto.DeptDto;
 import me.zhengjie.modules.system.service.dto.DeptQueryCriteria;
-import me.zhengjie.utils.*;
-import me.zhengjie.modules.system.repository.DeptRepository;
-import me.zhengjie.modules.system.service.DeptService;
 import me.zhengjie.modules.system.service.mapstruct.DeptMapper;
+import me.zhengjie.utils.*;
 import me.zhengjie.utils.enums.DataScopeEnum;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -42,19 +43,23 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
-* @author Zheng Jie
+* @author Evil
 * @date 2019-03-25
 */
 @Service
-@RequiredArgsConstructor
 @CacheConfig(cacheNames = "dept")
 public class DeptServiceImpl implements DeptService {
 
-    private final DeptRepository deptRepository;
-    private final DeptMapper deptMapper;
-    private final UserRepository userRepository;
-    private final RedisUtils redisUtils;
-    private final RoleRepository roleRepository;
+    @Autowired
+    private DeptRepository deptRepository;
+    @Autowired
+    private DeptMapper deptMapper;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private RedisUtils redisUtils;
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Override
     public List<DeptDto> queryAll(DeptQueryCriteria criteria, Boolean isQuery) throws Exception {

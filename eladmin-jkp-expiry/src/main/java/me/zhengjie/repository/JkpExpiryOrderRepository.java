@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 Zheng Jie
+*  Copyright 2019-2020 Evil
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -24,5 +24,5 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 * @author minliang.jiang
 * @date 2021-01-24
 **/
-public interface JkpExpiryOrderRepository extends JpaRepository<JkpExpiryOrder, Integer>, JpaSpecificationExecutor<JkpExpiryOrder> {
+public interface JkpExpiryOrderRepository extends JpaRepository<JkpExpiryOrder, Long>, JpaSpecificationExecutor<JkpExpiryOrder> {
 }

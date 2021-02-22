@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -21,27 +21,28 @@ import cn.hutool.extra.template.Template;
 import cn.hutool.extra.template.TemplateConfig;
 import cn.hutool.extra.template.TemplateEngine;
 import cn.hutool.extra.template.TemplateUtil;
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.domain.vo.EmailVo;
 import me.zhengjie.exception.BadRequestException;
 import me.zhengjie.modules.system.service.VerifyService;
 import me.zhengjie.utils.RedisUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.Collections;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2018-12-26
  */
 @Service
-@RequiredArgsConstructor
 public class VerifyServiceImpl implements VerifyService {
 
     @Value("${code.expiration}")
     private Long expiration;
-    private final RedisUtils redisUtils;
+    @Autowired
+    private RedisUtils redisUtils;
 
     @Override
     @Transactional(rollbackFor = Exception.class)

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,18 +15,13 @@
  */
 package me.zhengjie.utils.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 /**
  * <p>
  * 数据权限枚举
  * </p>
- * @author Zheng Jie
+ * @author Evil
  * @date 2020-05-07
  */
-@Getter
-@AllArgsConstructor
 public enum DataScopeEnum {
 
     /* 全部的数据权限 */
@@ -50,4 +45,16 @@ public enum DataScopeEnum {
         return null;
     }
 
+    DataScopeEnum(String value, String description) {
+        this.value = value;
+        this.description = description;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

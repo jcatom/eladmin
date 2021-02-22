@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package me.zhengjie.modules.mnt.service.impl;
 
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.modules.mnt.domain.ServerDeploy;
 import me.zhengjie.modules.mnt.repository.ServerDeployRepository;
 import me.zhengjie.modules.mnt.service.ServerDeployService;
@@ -27,24 +26,27 @@ import me.zhengjie.utils.FileUtil;
 import me.zhengjie.utils.PageUtil;
 import me.zhengjie.utils.QueryHelp;
 import me.zhengjie.utils.ValidationUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.*;
 
 /**
-* @author zhanghouying
+* @author Evil
 * @date 2019-08-24
 */
 @Service
-@RequiredArgsConstructor
 public class ServerDeployServiceImpl implements ServerDeployService {
 
-    private final ServerDeployRepository serverDeployRepository;
-    private final ServerDeployMapper serverDeployMapper;
+    @Autowired
+    private ServerDeployRepository serverDeployRepository;
+    @Autowired
+    private ServerDeployMapper serverDeployMapper;
 
     @Override
     public Object queryAll(ServerDeployQueryCriteria criteria, Pageable pageable){

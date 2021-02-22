@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -24,19 +24,15 @@ import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.storage.model.FileInfo;
 import com.qiniu.util.Auth;
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.domain.QiniuConfig;
 import me.zhengjie.domain.QiniuContent;
-import me.zhengjie.repository.QiniuContentRepository;
-import me.zhengjie.service.dto.QiniuQueryCriteria;
-import me.zhengjie.utils.QiNiuUtil;
 import me.zhengjie.exception.BadRequestException;
 import me.zhengjie.repository.QiNiuConfigRepository;
+import me.zhengjie.repository.QiniuContentRepository;
 import me.zhengjie.service.QiNiuService;
-import me.zhengjie.utils.FileUtil;
-import me.zhengjie.utils.PageUtil;
-import me.zhengjie.utils.QueryHelp;
-import me.zhengjie.utils.ValidationUtil;
+import me.zhengjie.service.dto.QiniuQueryCriteria;
+import me.zhengjie.utils.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CachePut;
@@ -45,21 +41,23 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.*;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2018-12-31
  */
 @Service
-@RequiredArgsConstructor
 @CacheConfig(cacheNames = "qiNiu")
 public class QiNiuServiceImpl implements QiNiuService {
 
-    private final QiNiuConfigRepository qiNiuConfigRepository;
-    private final QiniuContentRepository qiniuContentRepository;
+    @Autowired
+    private QiNiuConfigRepository qiNiuConfigRepository;
+    @Autowired
+    private QiniuContentRepository qiniuContentRepository;
 
     @Value("${qiniu.max-size}")
     private Long maxSize;

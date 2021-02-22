@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,9 +16,8 @@
 package me.zhengjie.modules.system.domain;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
 import me.zhengjie.base.BaseEntity;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -26,12 +25,10 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
-* @author Zheng Jie
+* @author Evil
 * @date 2019-03-29
 */
 @Entity
-@Getter
-@Setter
 @Table(name="sys_job")
 public class Job extends BaseEntity implements Serializable {
 
@@ -53,6 +50,38 @@ public class Job extends BaseEntity implements Serializable {
     @NotNull
     @ApiModelProperty(value = "是否启用")
     private Boolean enabled;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getJobSort() {
+        return jobSort;
+    }
+
+    public void setJobSort(Long jobSort) {
+        this.jobSort = jobSort;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,22 +16,17 @@
 package me.zhengjie.domain;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import me.zhengjie.utils.GenUtil;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * 列的数据信息
- * @author Zheng Jie
+ * @author Evil
  * @date 2019-01-02
  */
-@Getter
-@Setter
 @Entity
-@NoArgsConstructor
 @Table(name = "code_column_config")
 public class ColumnInfo implements Serializable {
 
@@ -80,6 +75,9 @@ public class ColumnInfo implements Serializable {
     @ApiModelProperty(value = "日期注解")
     private String dateAnnotation;
 
+    public ColumnInfo() {
+    }
+
     public ColumnInfo(String tableName, String columnName, Boolean notNull, String columnType, String remark, String keyType, String extra) {
         this.tableName = tableName;
         this.columnName = columnName;
@@ -93,5 +91,117 @@ public class ColumnInfo implements Serializable {
         this.remark = remark;
         this.listShow = true;
         this.formShow = true;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTableName() {
+        return tableName;
+    }
+
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
+
+    public String getColumnName() {
+        return columnName;
+    }
+
+    public void setColumnName(String columnName) {
+        this.columnName = columnName;
+    }
+
+    public String getColumnType() {
+        return columnType;
+    }
+
+    public void setColumnType(String columnType) {
+        this.columnType = columnType;
+    }
+
+    public String getKeyType() {
+        return keyType;
+    }
+
+    public void setKeyType(String keyType) {
+        this.keyType = keyType;
+    }
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public Boolean getNotNull() {
+        return notNull;
+    }
+
+    public void setNotNull(Boolean notNull) {
+        this.notNull = notNull;
+    }
+
+    public Boolean getListShow() {
+        return listShow;
+    }
+
+    public void setListShow(Boolean listShow) {
+        this.listShow = listShow;
+    }
+
+    public Boolean getFormShow() {
+        return formShow;
+    }
+
+    public void setFormShow(Boolean formShow) {
+        this.formShow = formShow;
+    }
+
+    public String getFormType() {
+        return formType;
+    }
+
+    public void setFormType(String formType) {
+        this.formType = formType;
+    }
+
+    public String getQueryType() {
+        return queryType;
+    }
+
+    public void setQueryType(String queryType) {
+        this.queryType = queryType;
+    }
+
+    public String getDictName() {
+        return dictName;
+    }
+
+    public void setDictName(String dictName) {
+        this.dictName = dictName;
+    }
+
+    public String getDateAnnotation() {
+        return dateAnnotation;
+    }
+
+    public void setDateAnnotation(String dateAnnotation) {
+        this.dateAnnotation = dateAnnotation;
     }
 }

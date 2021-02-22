@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 Zheng Jie
+*  Copyright 2019-2020 Evil
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -16,20 +16,21 @@
 package me.zhengjie.rest;
 
 
-import lombok.extern.java.Log;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import me.zhengjie.domain.JkpExpiryOrder;
 import me.zhengjie.service.JkpExpiryOrderService;
 import me.zhengjie.service.dto.JkpExpiryOrderQueryCriteria;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.*;
-import java.io.IOException;
+
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
 * @website https://el-admin.vip
@@ -37,12 +38,12 @@ import javax.servlet.http.HttpServletResponse;
 * @date 2021-01-24
 **/
 @RestController
-@RequiredArgsConstructor
 @Api(tags = "即开票订单管理管理")
 @RequestMapping("/api/jkpExpiryOrder")
 public class JkpExpiryOrderController {
 
-    private final JkpExpiryOrderService jkpExpiryOrderService;
+    @Autowired
+    private JkpExpiryOrderService jkpExpiryOrderService;
 
     @ApiOperation("导出数据")
     @GetMapping(value = "/download")
@@ -77,7 +78,7 @@ public class JkpExpiryOrderController {
     @ApiOperation("删除即开票订单管理")
     @PreAuthorize("@el.check('jkpExpiryOrder:del')")
     @DeleteMapping
-    public ResponseEntity<Object> delete(@RequestBody Integer[] ids) {
+    public ResponseEntity<Object> delete(@RequestBody Long[] ids) {
         jkpExpiryOrderService.deleteAll(ids);
         return new ResponseEntity<>(HttpStatus.OK);
     }

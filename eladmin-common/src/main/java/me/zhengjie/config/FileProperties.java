@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,15 +15,13 @@
  */
 package me.zhengjie.config;
 
-import lombok.Data;
 import me.zhengjie.utils.ElAdminConstant;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  */
-@Data
 @Configuration
 @ConfigurationProperties(prefix = "file")
 public class FileProperties {
@@ -50,11 +48,66 @@ public class FileProperties {
         return linux;
     }
 
-    @Data
+    public Long getMaxSize() {
+        return maxSize;
+    }
+
+    public void setMaxSize(Long maxSize) {
+        this.maxSize = maxSize;
+    }
+
+    public Long getAvatarMaxSize() {
+        return avatarMaxSize;
+    }
+
+    public void setAvatarMaxSize(Long avatarMaxSize) {
+        this.avatarMaxSize = avatarMaxSize;
+    }
+
+    public ElPath getMac() {
+        return mac;
+    }
+
+    public void setMac(ElPath mac) {
+        this.mac = mac;
+    }
+
+    public ElPath getLinux() {
+        return linux;
+    }
+
+    public void setLinux(ElPath linux) {
+        this.linux = linux;
+    }
+
+    public ElPath getWindows() {
+        return windows;
+    }
+
+    public void setWindows(ElPath windows) {
+        this.windows = windows;
+    }
+
     public static class ElPath{
 
         private String path;
 
         private String avatar;
+
+        public String getPath() {
+            return path;
+        }
+
+        public void setPath(String path) {
+            this.path = path;
+        }
+
+        public String getAvatar() {
+            return avatar;
+        }
+
+        public void setAvatar(String avatar) {
+            this.avatar = avatar;
+        }
     }
 }

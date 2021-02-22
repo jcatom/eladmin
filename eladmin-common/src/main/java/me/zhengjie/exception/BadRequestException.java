@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,16 +15,15 @@
  */
 package me.zhengjie.exception;
 
-import lombok.Getter;
 import org.springframework.http.HttpStatus;
+
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2018-11-23
  * 统一异常处理
  */
-@Getter
 public class BadRequestException extends RuntimeException{
 
     private Integer status = BAD_REQUEST.value();
@@ -36,5 +35,13 @@ public class BadRequestException extends RuntimeException{
     public BadRequestException(HttpStatus status,String msg){
         super(msg);
         this.status = status.value();
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

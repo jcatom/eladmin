@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,23 +15,23 @@
  */
 package me.zhengjie.modules.mnt.domain;
 
-import io.swagger.annotations.ApiModelProperty;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
-import lombok.Getter;
-import lombok.Setter;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.CreationTimestamp;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
-* @author zhanghouying
+* @author Evil
 * @date 2019-08-24
 */
 @Entity
-@Getter
-@Setter
 @Table(name="mnt_deploy_history")
 public class DeployHistory implements Serializable {
 
@@ -55,6 +55,54 @@ public class DeployHistory implements Serializable {
 
 	@ApiModelProperty(value = "部署ID")
 	private Long deployId;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getAppName() {
+        return appName;
+    }
+
+    public void setAppName(String appName) {
+        this.appName = appName;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public Timestamp getDeployDate() {
+        return deployDate;
+    }
+
+    public void setDeployDate(Timestamp deployDate) {
+        this.deployDate = deployDate;
+    }
+
+    public String getDeployUser() {
+        return deployUser;
+    }
+
+    public void setDeployUser(String deployUser) {
+        this.deployUser = deployUser;
+    }
+
+    public Long getDeployId() {
+        return deployId;
+    }
+
+    public void setDeployId(Long deployId) {
+        this.deployId = deployId;
+    }
 
     public void copy(DeployHistory source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));

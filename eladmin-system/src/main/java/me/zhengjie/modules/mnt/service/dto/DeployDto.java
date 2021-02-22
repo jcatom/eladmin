@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,9 +16,8 @@
 package me.zhengjie.modules.mnt.service.dto;
 
 import cn.hutool.core.collection.CollectionUtil;
-import lombok.Getter;
-import lombok.Setter;
 import me.zhengjie.base.BaseDTO;
+
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
@@ -26,11 +25,9 @@ import java.util.stream.Collectors;
 
 
 /**
-* @author zhanghouying
+* @author Evil
 * @date 2019-08-24
 */
-@Getter
-@Setter
 public class DeployDto extends BaseDTO implements Serializable {
 
 	/**
@@ -52,11 +49,48 @@ public class DeployDto extends BaseDTO implements Serializable {
 	 */
 	private String status;
 
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public AppDto getApp() {
+		return app;
+	}
+
+	public void setApp(AppDto app) {
+		this.app = app;
+	}
+
+	public Set<ServerDeployDto> getDeploys() {
+		return deploys;
+	}
+
+	public void setDeploys(Set<ServerDeployDto> deploys) {
+		this.deploys = deploys;
+	}
+
 	public String getServers() {
 		if(CollectionUtil.isNotEmpty(deploys)){
 			return deploys.stream().map(ServerDeployDto::getName).collect(Collectors.joining(","));
 		}
 		return servers;
+	}
+
+	public void setServers(String servers) {
+		this.servers = servers;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	@Override

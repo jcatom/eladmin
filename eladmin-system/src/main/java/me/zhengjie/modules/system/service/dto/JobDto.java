@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,20 +15,14 @@
  */
 package me.zhengjie.modules.system.service.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import me.zhengjie.base.BaseDTO;
 
 import java.io.Serializable;
 
 /**
-* @author Zheng Jie
+* @author Evil
 * @date 2019-03-29
 */
-@Getter
-@Setter
-@NoArgsConstructor
 public class JobDto extends BaseDTO implements Serializable {
 
     private Long id;
@@ -39,8 +33,43 @@ public class JobDto extends BaseDTO implements Serializable {
 
     private Boolean enabled;
 
+    public JobDto() {
+    }
+
     public JobDto(String name, Boolean enabled) {
         this.name = name;
+        this.enabled = enabled;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getJobSort() {
+        return jobSort;
+    }
+
+    public void setJobSort(Integer jobSort) {
+        this.jobSort = jobSort;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 }

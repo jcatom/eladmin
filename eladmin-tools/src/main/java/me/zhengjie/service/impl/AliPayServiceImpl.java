@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -19,29 +19,30 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.alipay.api.request.AlipayTradeWapPayRequest;
-import lombok.RequiredArgsConstructor;
-import me.zhengjie.domain.vo.TradeVo;
 import me.zhengjie.domain.AlipayConfig;
+import me.zhengjie.domain.vo.TradeVo;
 import me.zhengjie.exception.BadRequestException;
 import me.zhengjie.repository.AliPayRepository;
 import me.zhengjie.service.AliPayService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.Optional;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2018-12-31
  */
 @Service
-@RequiredArgsConstructor
 @CacheConfig(cacheNames = "aliPay")
 public class AliPayServiceImpl implements AliPayService {
 
-    private final AliPayRepository alipayRepository;
+    @Autowired
+    private AliPayRepository alipayRepository;
 
     @Override
     @Cacheable(key = "'config'")

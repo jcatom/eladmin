@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,21 +15,23 @@
  */
 package me.zhengjie.config;
 
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @website https://el-admin.vip
  * @description
  * @date 2020-05-18
  **/
-@Data
 @Component
 public class RsaProperties {
 
     public static String privateKey;
+
+    public static String getPrivateKey() {
+        return privateKey;
+    }
 
     @Value("${rsa.private_key}")
     public void setPrivateKey(String privateKey) {

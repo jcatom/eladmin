@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,15 +15,12 @@
  */
 package me.zhengjie.modules.security.config.bean;
 
-import lombok.Data;
-
 /**
  * Jwt参数配置
  *
- * @author Zheng Jie
+ * @author Evil
  * @date 2019年11月28日
  */
-@Data
 public class SecurityProperties {
 
     /**
@@ -65,6 +62,67 @@ public class SecurityProperties {
      * 续期时间
      */
     private Long renew;
+
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
+    }
+
+    public void setTokenStartWith(String tokenStartWith) {
+        this.tokenStartWith = tokenStartWith;
+    }
+
+    public String getBase64Secret() {
+        return base64Secret;
+    }
+
+    public void setBase64Secret(String base64Secret) {
+        this.base64Secret = base64Secret;
+    }
+
+    public Long getTokenValidityInSeconds() {
+        return tokenValidityInSeconds;
+    }
+
+    public void setTokenValidityInSeconds(Long tokenValidityInSeconds) {
+        this.tokenValidityInSeconds = tokenValidityInSeconds;
+    }
+
+    public String getOnlineKey() {
+        return onlineKey;
+    }
+
+    public void setOnlineKey(String onlineKey) {
+        this.onlineKey = onlineKey;
+    }
+
+    public String getCodeKey() {
+        return codeKey;
+    }
+
+    public void setCodeKey(String codeKey) {
+        this.codeKey = codeKey;
+    }
+
+    public Long getDetect() {
+        return detect;
+    }
+
+    public void setDetect(Long detect) {
+        this.detect = detect;
+    }
+
+    public Long getRenew() {
+        return renew;
+    }
+
+    public void setRenew(Long renew) {
+        this.renew = renew;
+    }
 
     public String getTokenStartWith() {
         return tokenStartWith + " ";

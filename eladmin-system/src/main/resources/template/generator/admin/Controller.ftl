@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 Zheng Jie
+*  Copyright 2019-2020 Evil
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -20,10 +20,10 @@ import ${package}.domain.${className};
 import ${package}.service.${className}Service;
 import ${package}.service.dto.${className}QueryCriteria;
 import org.springframework.data.domain.Pageable;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.*;
@@ -36,12 +36,12 @@ import javax.servlet.http.HttpServletResponse;
 * @date ${date}
 **/
 @RestController
-@RequiredArgsConstructor
 @Api(tags = "${apiAlias}管理")
 @RequestMapping("/api/${changeClassName}")
 public class ${className}Controller {
 
-    private final ${className}Service ${changeClassName}Service;
+    @Autowired
+    private ${className}Service ${changeClassName}Service;
 
     @Log("导出数据")
     @ApiOperation("导出数据")

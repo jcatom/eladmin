@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -17,9 +17,8 @@ package me.zhengjie.utils;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.template.*;
-import lombok.extern.slf4j.Slf4j;
-import me.zhengjie.domain.GenConfig;
 import me.zhengjie.domain.ColumnInfo;
+import me.zhengjie.domain.GenConfig;
 import org.springframework.util.ObjectUtils;
 
 import java.io.File;
@@ -27,17 +26,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static me.zhengjie.utils.FileUtil.SYS_TEM_DIR;
 
 /**
  * 代码生成
  *
- * @author Zheng Jie
+ * @author Evil
  * @date 2019-01-02
  */
-@Slf4j
 @SuppressWarnings({"unchecked", "all"})
 public class GenUtil {
 

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,13 +15,16 @@
  */
 package me.zhengjie.modules.security.config;
 
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.annotation.AnonymousAccess;
 import me.zhengjie.modules.security.config.bean.SecurityProperties;
-import me.zhengjie.modules.security.security.*;
+import me.zhengjie.modules.security.security.JwtAccessDeniedHandler;
+import me.zhengjie.modules.security.security.JwtAuthenticationEntryPoint;
+import me.zhengjie.modules.security.security.TokenConfigurer;
+import me.zhengjie.modules.security.security.TokenProvider;
 import me.zhengjie.modules.security.service.OnlineUserService;
 import me.zhengjie.modules.security.service.UserCacheClean;
 import me.zhengjie.utils.enums.RequestMethodEnum;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,25 +43,33 @@ import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+
 import java.util.*;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  */
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final TokenProvider tokenProvider;
-    private final CorsFilter corsFilter;
-    private final JwtAuthenticationEntryPoint authenticationErrorHandler;
-    private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
-    private final ApplicationContext applicationContext;
-    private final SecurityProperties properties;
-    private final OnlineUserService onlineUserService;
-    private final UserCacheClean userCacheClean;
+    @Autowired
+    private TokenProvider tokenProvider;
+    @Autowired
+    private CorsFilter corsFilter;
+    @Autowired
+    private JwtAuthenticationEntryPoint authenticationErrorHandler;
+    @Autowired
+    private JwtAccessDeniedHandler jwtAccessDeniedHandler;
+    @Autowired
+    private ApplicationContext applicationContext;
+    @Autowired
+    private SecurityProperties properties;
+    @Autowired
+    private OnlineUserService onlineUserService;
+    @Autowired
+    private UserCacheClean userCacheClean;
 
     @Bean
     GrantedAuthorityDefaults grantedAuthorityDefaults() {

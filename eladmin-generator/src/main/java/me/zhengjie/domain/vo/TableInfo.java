@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,18 +15,11 @@
  */
 package me.zhengjie.domain.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 /**
  * 表的数据信息
- * @author Zheng Jie
+ * @author Evil
  * @date 2019-01-02
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class TableInfo {
 
     /** 表名称 */
@@ -44,5 +37,54 @@ public class TableInfo {
     /** 备注 */
     private Object remark;
 
+    public TableInfo() {
+    }
 
+    public TableInfo(Object tableName, Object createTime, Object engine, Object coding, Object remark) {
+        this.tableName = tableName;
+        this.createTime = createTime;
+        this.engine = engine;
+        this.coding = coding;
+        this.remark = remark;
+    }
+
+    public Object getTableName() {
+        return tableName;
+    }
+
+    public void setTableName(Object tableName) {
+        this.tableName = tableName;
+    }
+
+    public Object getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Object createTime) {
+        this.createTime = createTime;
+    }
+
+    public Object getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Object engine) {
+        this.engine = engine;
+    }
+
+    public Object getCoding() {
+        return coding;
+    }
+
+    public void setCoding(Object coding) {
+        this.coding = coding;
+    }
+
+    public Object getRemark() {
+        return remark;
+    }
+
+    public void setRemark(Object remark) {
+        this.remark = remark;
+    }
 }

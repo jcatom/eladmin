@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 Zheng Jie
+*  Copyright 2019-2020 Evil
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -52,7 +52,7 @@ public interface JkpExpiryOrderService {
      * @param id ID
      * @return JkpExpiryOrderDto
      */
-    JkpExpiryOrderDto findById(Integer id);
+    JkpExpiryOrderDto findById(Long id);
 
     /**
     * 创建
@@ -71,7 +71,7 @@ public interface JkpExpiryOrderService {
     * 多选删除
     * @param ids /
     */
-    void deleteAll(Integer[] ids);
+    void deleteAll(Long[] ids);
 
     /**
     * 导出数据

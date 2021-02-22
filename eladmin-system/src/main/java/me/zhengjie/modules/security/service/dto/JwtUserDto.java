@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,21 +16,18 @@
 package me.zhengjie.modules.security.service.dto;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import me.zhengjie.modules.system.service.dto.UserDto;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2018-11-23
  */
-@Getter
-@AllArgsConstructor
 public class JwtUserDto implements UserDetails {
 
     private final UserDto user;
@@ -39,6 +36,12 @@ public class JwtUserDto implements UserDetails {
 
     @JSONField(serialize = false)
     private final List<GrantedAuthority> authorities;
+
+    public JwtUserDto(UserDto user, List<Long> dataScopes, List<GrantedAuthority> authorities) {
+        this.user = user;
+        this.dataScopes = dataScopes;
+        this.authorities = authorities;
+    }
 
     public Set<String> getRoles() {
         return authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toSet());
@@ -78,5 +81,18 @@ public class JwtUserDto implements UserDetails {
     @JSONField(serialize = false)
     public boolean isEnabled() {
         return user.getEnabled();
+    }
+
+    public UserDto getUser() {
+        return user;
+    }
+
+    public List<Long> getDataScopes() {
+        return dataScopes;
+    }
+
+    @Override
+    public List<GrantedAuthority> getAuthorities() {
+        return authorities;
     }
 }

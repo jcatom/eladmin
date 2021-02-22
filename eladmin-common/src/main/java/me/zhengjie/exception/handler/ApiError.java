@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,14 +16,13 @@
 package me.zhengjie.exception.handler;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
+
 import java.time.LocalDateTime;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2018-11-23
  */
-@Data
 class ApiError {
 
     private Integer status = 400;
@@ -46,6 +45,30 @@ class ApiError {
         apiError.setStatus(status);
         apiError.setMessage(message);
         return apiError;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
 

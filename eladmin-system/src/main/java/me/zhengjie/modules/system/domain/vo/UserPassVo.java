@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,17 +15,30 @@
  */
 package me.zhengjie.modules.system.domain.vo;
 
-import lombok.Data;
-
 /**
  * 修改密码的 Vo 类
- * @author Zheng Jie
+ * @author Evil
  * @date 2019年7月11日13:59:49
  */
-@Data
 public class UserPassVo {
 
     private String oldPass;
 
     private String newPass;
+
+    public String getOldPass() {
+        return oldPass;
+    }
+
+    public void setOldPass(String oldPass) {
+        this.oldPass = oldPass;
+    }
+
+    public String getNewPass() {
+        return newPass;
+    }
+
+    public void setNewPass(String newPass) {
+        this.newPass = newPass;
+    }
 }

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,16 +15,15 @@
  */
 package me.zhengjie.modules.mnt.service.dto;
 
-import lombok.Data;
 import me.zhengjie.annotation.Query;
+
 import java.sql.Timestamp;
 import java.util.List;
 
 /**
-* @author zhanghouying
+* @author Evil
 * @date 2019-08-24
 */
-@Data
 public class DeployQueryCriteria{
 
 	/**
@@ -36,4 +35,19 @@ public class DeployQueryCriteria{
 	@Query(type = Query.Type.BETWEEN)
 	private List<Timestamp> createTime;
 
+	public String getAppName() {
+		return appName;
+	}
+
+	public void setAppName(String appName) {
+		this.appName = appName;
+	}
+
+	public List<Timestamp> getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(List<Timestamp> createTime) {
+		this.createTime = createTime;
+	}
 }

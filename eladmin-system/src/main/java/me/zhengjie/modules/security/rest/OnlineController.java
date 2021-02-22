@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -17,28 +17,29 @@ package me.zhengjie.modules.security.rest;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.modules.security.service.OnlineUserService;
 import me.zhengjie.utils.EncryptUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  */
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/auth/online")
 @Api(tags = "系统：在线用户管理")
 public class OnlineController {
 
-    private final OnlineUserService onlineUserService;
+    @Autowired
+    private OnlineUserService onlineUserService;
 
     @ApiOperation("查询在线用户")
     @GetMapping

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -17,11 +17,11 @@ package me.zhengjie.rest;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.annotation.Log;
-import me.zhengjie.domain.vo.EmailVo;
 import me.zhengjie.domain.EmailConfig;
+import me.zhengjie.domain.vo.EmailVo;
 import me.zhengjie.service.EmailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -33,12 +33,12 @@ import org.springframework.web.bind.annotation.*;
  * @date 2018/09/28 6:55:53
  */
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("api/email")
 @Api(tags = "工具：邮件管理")
 public class EmailController {
 
-    private final EmailService emailService;
+    @Autowired
+    private EmailService emailService;
 
     @GetMapping
     public ResponseEntity<Object> queryConfig(){

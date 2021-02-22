@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,17 +15,14 @@
  */
 package me.zhengjie.modules.system.service.dto;
 
-import lombok.Getter;
-import lombok.Setter;
 import me.zhengjie.base.BaseDTO;
+
 import java.io.Serializable;
 
 /**
-* @author Zheng Jie
+* @author Evil
 * @date 2019-04-10
 */
-@Getter
-@Setter
 public class DictDetailDto extends BaseDTO implements Serializable {
 
     private Long id;
@@ -37,4 +34,44 @@ public class DictDetailDto extends BaseDTO implements Serializable {
     private String value;
 
     private Integer dictSort;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public DictSmallDto getDict() {
+        return dict;
+    }
+
+    public void setDict(DictSmallDto dict) {
+        this.dict = dict;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public Integer getDictSort() {
+        return dictSort;
+    }
+
+    public void setDictSort(Integer dictSort) {
+        this.dictSort = dictSort;
+    }
 }

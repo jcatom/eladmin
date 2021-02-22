@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,11 +15,13 @@
  */
 package me.zhengjie.config.thread;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -28,9 +30,10 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @author https://juejin.im/entry/5abb8f6951882555677e9da2
  * @date 2019年10月31日15:06:18
  */
-@Slf4j
 @Configuration
 public class AsyncTaskExecutePool implements AsyncConfigurer {
+
+    private static Logger log = LoggerFactory.getLogger(AsyncTaskExecutePool.class);
 
     /** 注入配置类 */
     private final AsyncTaskProperties config;

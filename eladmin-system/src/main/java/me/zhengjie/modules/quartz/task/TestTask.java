@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,17 +15,19 @@
  */
 package me.zhengjie.modules.quartz.task;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
  * 测试用
- * @author Zheng Jie
+ * @author Evil
  * @date 2019-01-08
  */
-@Slf4j
 @Component
 public class TestTask {
+
+    private final Logger log = LoggerFactory.getLogger(TestTask.class);
 
     public void run(){
         log.info("run 执行成功");

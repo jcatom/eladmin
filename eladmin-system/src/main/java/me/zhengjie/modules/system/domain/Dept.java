@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -17,9 +17,8 @@ package me.zhengjie.modules.system.domain;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
 import me.zhengjie.base.BaseEntity;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -28,12 +27,10 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
-* @author Zheng Jie
+* @author Evil
 * @date 2019-03-25
 */
 @Entity
-@Getter
-@Setter
 @Table(name="sys_dept")
 public class Dept extends BaseEntity implements Serializable {
 
@@ -65,6 +62,62 @@ public class Dept extends BaseEntity implements Serializable {
 
     @ApiModelProperty(value = "子节点数目", hidden = true)
     private Integer subCount = 0;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public Integer getDeptSort() {
+        return deptSort;
+    }
+
+    public void setDeptSort(Integer deptSort) {
+        this.deptSort = deptSort;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Long getPid() {
+        return pid;
+    }
+
+    public void setPid(Long pid) {
+        this.pid = pid;
+    }
+
+    public Integer getSubCount() {
+        return subCount;
+    }
+
+    public void setSubCount(Integer subCount) {
+        this.subCount = subCount;
+    }
 
     @Override
     public boolean equals(Object o) {

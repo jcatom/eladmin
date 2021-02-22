@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,17 +15,12 @@
  */
 package me.zhengjie.utils.enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 /**
- * @author Zheng Jie
+ * @author Evil
  * @website https://el-admin.vip
  * @description
  * @date 2020-06-10
  **/
-@Getter
-@AllArgsConstructor
 public enum RequestMethodEnum {
 
     /**
@@ -70,5 +65,13 @@ public enum RequestMethodEnum {
             }
         }
         return ALL;
+    }
+
+    RequestMethodEnum(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
     }
 }

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package me.zhengjie.modules.quartz.service.impl;
 
 import cn.hutool.core.util.IdUtil;
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.exception.BadRequestException;
 import me.zhengjie.modules.quartz.domain.QuartzJob;
 import me.zhengjie.modules.quartz.domain.QuartzLog;
@@ -27,26 +26,35 @@ import me.zhengjie.modules.quartz.service.dto.JobQueryCriteria;
 import me.zhengjie.modules.quartz.utils.QuartzManage;
 import me.zhengjie.utils.*;
 import org.quartz.CronExpression;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.*;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2019-01-07
  */
-@RequiredArgsConstructor
 @Service(value = "quartzJobService")
 public class QuartzJobServiceImpl implements QuartzJobService {
 
-    private final QuartzJobRepository quartzJobRepository;
-    private final QuartzLogRepository quartzLogRepository;
-    private final QuartzManage quartzManage;
-    private final RedisUtils redisUtils;
+    private final Logger log = LoggerFactory.getLogger(QuartzJobServiceImpl.class);
+
+    @Autowired
+    private QuartzJobRepository quartzJobRepository;
+    @Autowired
+    private QuartzLogRepository quartzLogRepository;
+    @Autowired
+    private QuartzManage quartzManage;
+    @Autowired
+    private RedisUtils redisUtils;
 
     @Override
     public Object queryAll(JobQueryCriteria criteria, Pageable pageable){
@@ -102,13 +110,13 @@ public class QuartzJobServiceImpl implements QuartzJobService {
     }
 
     @Override
-    public void updateIsPause(QuartzJob quartzJob) {
-        if (quartzJob.getIsPause()) {
+    public void updatePause(QuartzJob quartzJob) {
+        if (quartzJob.getPause()) {
             quartzManage.resumeJob(quartzJob);
-            quartzJob.setIsPause(false);
+            quartzJob.setPause(false);
         } else {
             quartzManage.pauseJob(quartzJob);
-            quartzJob.setIsPause(true);
+            quartzJob.setPause(true);
         }
         quartzJobRepository.save(quartzJob);
     }
@@ -163,7 +171,7 @@ public class QuartzJobServiceImpl implements QuartzJobService {
             map.put("执行方法", quartzJob.getMethodName());
             map.put("参数", quartzJob.getParams());
             map.put("表达式", quartzJob.getCronExpression());
-            map.put("状态", quartzJob.getIsPause() ? "暂停中" : "运行中");
+            map.put("状态", quartzJob.getPause() ? "暂停中" : "运行中");
             map.put("描述", quartzJob.getDescription());
             map.put("创建日期", quartzJob.getCreateTime());
             list.add(map);
@@ -183,7 +191,7 @@ public class QuartzJobServiceImpl implements QuartzJobService {
             map.put("表达式", quartzLog.getCronExpression());
             map.put("异常详情", quartzLog.getExceptionDetail());
             map.put("耗时/毫秒", quartzLog.getTime());
-            map.put("状态", quartzLog.getIsSuccess() ? "成功" : "失败");
+            map.put("状态", quartzLog.getSuccess() ? "成功" : "失败");
             map.put("创建日期", quartzLog.getCreateTime());
             list.add(map);
         }

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,23 +15,20 @@
  */
 package me.zhengjie.modules.mnt.domain;
 
-import io.swagger.annotations.ApiModelProperty;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
-import lombok.Getter;
-import lombok.Setter;
+import io.swagger.annotations.ApiModelProperty;
 import me.zhengjie.base.BaseEntity;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
 /**
-* @author zhanghouying
+* @author Evil
 * @date 2019-08-24
 */
 @Entity
-@Getter
-@Setter
 @Table(name="mnt_deploy")
 public class Deploy extends BaseEntity implements Serializable {
 
@@ -53,7 +50,31 @@ public class Deploy extends BaseEntity implements Serializable {
 	@ApiModelProperty(value = "应用编号")
     private App app;
 
-    public void copy(Deploy source){
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Set<ServerDeploy> getDeploys() {
+		return deploys;
+	}
+
+	public void setDeploys(Set<ServerDeploy> deploys) {
+		this.deploys = deploys;
+	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public void copy(Deploy source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));
     }
 }

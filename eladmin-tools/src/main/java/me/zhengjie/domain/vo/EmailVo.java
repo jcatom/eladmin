@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,9 +15,6 @@
  */
 package me.zhengjie.domain.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
@@ -27,9 +24,6 @@ import java.util.List;
  * @author 郑杰
  * @date 2018/09/28 12:02:14
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class EmailVo {
 
     /** 收件人，支持多个收件人 */
@@ -41,4 +35,37 @@ public class EmailVo {
 
     @NotBlank
     private String content;
+
+    public EmailVo() {
+    }
+
+    public EmailVo(@NotEmpty List<String> tos, @NotBlank String subject, @NotBlank String content) {
+        this.tos = tos;
+        this.subject = subject;
+        this.content = content;
+    }
+
+    public List<String> getTos() {
+        return tos;
+    }
+
+    public void setTos(List<String> tos) {
+        this.tos = tos;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 }

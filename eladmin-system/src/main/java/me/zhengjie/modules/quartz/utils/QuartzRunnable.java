@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,10 +15,10 @@
  */
 package me.zhengjie.modules.quartz.utils;
 
-import lombok.extern.slf4j.Slf4j;
 import me.zhengjie.utils.SpringContextHolder;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.ReflectionUtils;
+
 import java.lang.reflect.Method;
 import java.util.concurrent.Callable;
 
@@ -26,7 +26,6 @@ import java.util.concurrent.Callable;
  * 执行定时任务
  * @author /
  */
-@Slf4j
 public class QuartzRunnable implements Callable<Object> {
 
 	private final Object target;

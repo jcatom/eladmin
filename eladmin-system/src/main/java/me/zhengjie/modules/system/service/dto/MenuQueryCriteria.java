@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,16 +15,15 @@
  */
 package me.zhengjie.modules.system.service.dto;
 
-import lombok.Data;
 import me.zhengjie.annotation.Query;
+
 import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * 公共查询类
  */
-@Data
 public class MenuQueryCriteria {
 
     @Query(blurry = "title,component,permission")
@@ -38,4 +37,36 @@ public class MenuQueryCriteria {
 
     @Query
     private Long pid;
+
+    public String getBlurry() {
+        return blurry;
+    }
+
+    public void setBlurry(String blurry) {
+        this.blurry = blurry;
+    }
+
+    public List<Timestamp> getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(List<Timestamp> createTime) {
+        this.createTime = createTime;
+    }
+
+    public Boolean getPidIsNull() {
+        return pidIsNull;
+    }
+
+    public void setPidIsNull(Boolean pidIsNull) {
+        this.pidIsNull = pidIsNull;
+    }
+
+    public Long getPid() {
+        return pid;
+    }
+
+    public void setPid(Long pid) {
+        this.pid = pid;
+    }
 }

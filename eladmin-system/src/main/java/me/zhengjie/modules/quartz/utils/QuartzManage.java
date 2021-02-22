@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,23 +15,28 @@
  */
 package me.zhengjie.modules.quartz.utils;
 
-import lombok.extern.slf4j.Slf4j;
 import me.zhengjie.exception.BadRequestException;
 import me.zhengjie.modules.quartz.domain.QuartzJob;
+import me.zhengjie.modules.quartz.service.impl.QuartzJobServiceImpl;
 import org.quartz.*;
 import org.quartz.impl.triggers.CronTriggerImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
 import javax.annotation.Resource;
 import java.util.Date;
+
 import static org.quartz.TriggerBuilder.newTrigger;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2019-01-07
  */
-@Slf4j
 @Component
 public class QuartzManage {
+
+    private final Logger log = LoggerFactory.getLogger(QuartzManage.class);
 
     private static final String JOB_NAME = "TASK_";
 
@@ -60,7 +65,7 @@ public class QuartzManage {
             scheduler.scheduleJob(jobDetail,cronTrigger);
 
             // 暂停任务
-            if (quartzJob.getIsPause()) {
+            if (quartzJob.getPause()) {
                 pauseJob(quartzJob);
             }
         } catch (Exception e){
@@ -90,7 +95,7 @@ public class QuartzManage {
 
             scheduler.rescheduleJob(triggerKey, trigger);
             // 暂停任务
-            if (quartzJob.getIsPause()) {
+            if (quartzJob.getPause()) {
                 pauseJob(quartzJob);
             }
         } catch (Exception e){

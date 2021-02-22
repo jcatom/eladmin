@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,7 +16,8 @@
 package me.zhengjie.modules.mnt.websocket;
 
 import com.alibaba.fastjson.JSONObject;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.*;
@@ -26,13 +27,14 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArraySet;
 /**
- * @author ZhangHouYing
+ * @author Evil
  * @date 2019-08-10 15:46
  */
 @ServerEndpoint("/webSocket/{sid}")
-@Slf4j
 @Component
 public class WebSocketServer {
+
+	private final static Logger log = LoggerFactory.getLogger(WebSocketServer.class);
 
 	/**
 	 * concurrent包的线程安全Set，用来存放每个客户端对应的MyWebSocket对象。

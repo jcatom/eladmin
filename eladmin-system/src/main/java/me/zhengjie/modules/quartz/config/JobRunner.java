@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,12 +15,12 @@
  */
 package me.zhengjie.modules.quartz.config;
 
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.modules.quartz.domain.QuartzJob;
 import me.zhengjie.modules.quartz.repository.QuartzJobRepository;
 import me.zhengjie.modules.quartz.utils.QuartzManage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -28,15 +28,16 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2019-01-07
  */
 @Component
-@RequiredArgsConstructor
 public class JobRunner implements ApplicationRunner {
     private static final Logger log = LoggerFactory.getLogger(JobRunner.class);
-    private final QuartzJobRepository quartzJobRepository;
-    private final QuartzManage quartzManage;
+    @Autowired
+    private QuartzJobRepository quartzJobRepository;
+    @Autowired
+    private QuartzManage quartzManage;
 
     /**
      * 项目启动时重新激活启用的定时任务
@@ -46,7 +47,7 @@ public class JobRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments applicationArguments) {
         log.info("--------------------注入定时任务---------------------");
-        List<QuartzJob> quartzJobs = quartzJobRepository.findByIsPauseIsFalse();
+        List<QuartzJob> quartzJobs = quartzJobRepository.findByPauseIsFalse();
         quartzJobs.forEach(quartzManage::addJob);
         log.info("--------------------定时任务注入完成---------------------");
     }

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,17 +15,16 @@
  */
 package me.zhengjie.modules.system.service.dto;
 
-import lombok.Data;
 import me.zhengjie.annotation.DataPermission;
 import me.zhengjie.annotation.Query;
+
 import java.sql.Timestamp;
 import java.util.List;
 
 /**
-* @author Zheng Jie
+* @author Evil
 * @date 2019-03-25
 */
-@Data
 @DataPermission(fieldName = "id")
 public class DeptQueryCriteria{
 
@@ -43,4 +42,44 @@ public class DeptQueryCriteria{
 
     @Query(type = Query.Type.BETWEEN)
     private List<Timestamp> createTime;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Long getPid() {
+        return pid;
+    }
+
+    public void setPid(Long pid) {
+        this.pid = pid;
+    }
+
+    public Boolean getPidIsNull() {
+        return pidIsNull;
+    }
+
+    public void setPidIsNull(Boolean pidIsNull) {
+        this.pidIsNull = pidIsNull;
+    }
+
+    public List<Timestamp> getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(List<Timestamp> createTime) {
+        this.createTime = createTime;
+    }
 }

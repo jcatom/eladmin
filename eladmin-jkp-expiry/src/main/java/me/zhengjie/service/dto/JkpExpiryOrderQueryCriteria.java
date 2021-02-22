@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 Zheng Jie
+*  Copyright 2019-2020 Evil
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -15,17 +15,16 @@
 */
 package me.zhengjie.service.dto;
 
-import lombok.Data;
+import me.zhengjie.annotation.Query;
+
 import java.sql.Timestamp;
 import java.util.List;
-import me.zhengjie.annotation.Query;
 
 /**
 * @website https://el-admin.vip
 * @author minliang.jiang
 * @date 2021-01-24
 **/
-@Data
 public class JkpExpiryOrderQueryCriteria{
 
     /** 精确 */
@@ -42,4 +41,36 @@ public class JkpExpiryOrderQueryCriteria{
     /** BETWEEN */
     @Query(type = Query.Type.BETWEEN)
     private List<Timestamp> createTime;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
+    }
+
+    public Integer getExpiryUserId() {
+        return expiryUserId;
+    }
+
+    public void setExpiryUserId(Integer expiryUserId) {
+        this.expiryUserId = expiryUserId;
+    }
+
+    public List<Timestamp> getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(List<Timestamp> createTime) {
+        this.createTime = createTime;
+    }
 }

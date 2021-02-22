@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -17,24 +17,26 @@ package me.zhengjie.modules.system.rest;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.RequiredArgsConstructor;
 import me.zhengjie.modules.system.service.MonitorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2020-05-02
  */
 @RestController
-@RequiredArgsConstructor
 @Api(tags = "系统-服务监控管理")
 @RequestMapping("/api/monitor")
 public class MonitorController {
 
-    private final MonitorService serverService;
+    @Autowired
+    private MonitorService serverService;
 
     @GetMapping
     @ApiOperation("查询服务监控")

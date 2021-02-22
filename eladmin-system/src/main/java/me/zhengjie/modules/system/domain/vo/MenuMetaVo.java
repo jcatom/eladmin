@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,16 +15,12 @@
  */
 package me.zhengjie.modules.system.domain.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author Zheng Jie
+ * @author Evil
  * @date 2018-12-20
  */
-@Data
-@AllArgsConstructor
 public class MenuMetaVo implements Serializable {
 
     private String title;
@@ -32,4 +28,34 @@ public class MenuMetaVo implements Serializable {
     private String icon;
 
     private Boolean noCache;
+
+    public MenuMetaVo(String title, String icon, Boolean noCache) {
+        this.title = title;
+        this.icon = icon;
+        this.noCache = noCache;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public Boolean getNoCache() {
+        return noCache;
+    }
+
+    public void setNoCache(Boolean noCache) {
+        this.noCache = noCache;
+    }
 }

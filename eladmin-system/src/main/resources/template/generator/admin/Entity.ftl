@@ -1,5 +1,5 @@
 /*
-*  Copyright 2019-2020 Zheng Jie
+*  Copyright 2019-2020 Evil
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
 */
 package ${package}.domain;
 
-import lombok.Data;
 import cn.hutool.core.bean.BeanUtil;
 import io.swagger.annotations.ApiModelProperty;
 import cn.hutool.core.bean.copier.CopyOptions;
@@ -43,7 +42,6 @@ import java.io.Serializable;
 * @date ${date}
 **/
 @Entity
-@Data
 @Table(name="${tableName}")
 public class ${className} implements Serializable {
 <#if columns??>

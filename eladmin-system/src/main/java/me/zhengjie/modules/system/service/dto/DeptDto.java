@@ -1,5 +1,5 @@
 /*
- *  Copyright 2019-2020 Zheng Jie
+ *  Copyright 2019-2020 Evil
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,19 +16,16 @@
 package me.zhengjie.modules.system.service.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Getter;
-import lombok.Setter;
 import me.zhengjie.base.BaseDTO;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 /**
-* @author Zheng Jie
+* @author Evil
 * @date 2019-03-25
 */
-@Getter
-@Setter
 public class DeptDto extends BaseDTO implements Serializable {
 
     private Long id;
@@ -56,6 +53,63 @@ public class DeptDto extends BaseDTO implements Serializable {
 
     public String getLabel() {
         return name;
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Integer getDeptSort() {
+        return deptSort;
+    }
+
+    public void setDeptSort(Integer deptSort) {
+        this.deptSort = deptSort;
+    }
+
+    public List<DeptDto> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<DeptDto> children) {
+        this.children = children;
+    }
+
+    public Long getPid() {
+        return pid;
+    }
+
+    public void setPid(Long pid) {
+        this.pid = pid;
+    }
+
+    public Integer getSubCount() {
+        return subCount;
+    }
+
+    public void setSubCount(Integer subCount) {
+        this.subCount = subCount;
     }
 
     @Override
